@@ -19,10 +19,13 @@ class Form extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <div className={classes.main}>
-                <h1>FORM</h1>
-            </div>
+            <main className={classes.main}>
+                <Paper>
+                    <h1>FORM</h1>
+                </Paper>
+            </main>
         )
+
     }
 };
 export default withStyles(styles)(Form);
