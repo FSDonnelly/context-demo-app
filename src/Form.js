@@ -20,8 +20,66 @@ class Form extends Component {
         const { classes } = this.props;
         return (
             <main className={classes.main}>
-                <Paper>
-                    <h1>FORM</h1>
+                <Paper className={classes.paper}>
+                    <Avatar className={classes.avatar}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography variant="h5">Sign In</Typography>
+                    <Select value="english">
+                        <MenuItem value="english">English</MenuItem>
+                        <MenuItem value="french">French</MenuItem>
+                        <MenuItem value="spanish">Spanish</MenuItem>
+                    </Select>
+                    <form className={classes.form}>
+                        <FormControl
+                            margin="normal"
+                            required
+                            fullWidth
+                        >
+                            <InputLabel
+                                htmlFor="email"
+                            >
+                                Email
+                             </InputLabel>
+                            <Input
+                                id="email"
+                                name="email"
+                                autoFocus
+                            >
+
+                            </Input>
+                        </FormControl>
+                        <FormControl
+                            margin="normal"
+                            required
+                            fullWidth
+                        >
+                            <InputLabel
+                                htmlFor="password"
+                            >
+                                Password
+                             </InputLabel>
+                            <Input
+                                id="password"
+                                name="password"
+                                autoFocus
+                            >
+                            </Input>
+                        </FormControl>
+                        <FormControlLabel
+                            control={<Checkbox color="primary" />}
+                            label="Remember Me"
+                        />
+                        <Button
+                            className={classes.submit}
+                            color="primary"
+                            fullWidth
+                            type="submit"
+                            variant="contained"
+                        >
+                            Sign In
+                        </Button>
+                    </form>
                 </Paper>
             </main>
         )
