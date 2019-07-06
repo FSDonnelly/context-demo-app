@@ -3,7 +3,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import Form from './Form';
 import PageContent from './PageContent';
-import {ThemeProvider} from './contexts/ThemeContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Navbar />
         <Form />
       </PageContent>
-    // </ThemeProvider>
+    </ThemeProvider>
   );
 }
 
