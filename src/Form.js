@@ -14,18 +14,44 @@ import Select from "@material-ui/core/Select";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 import styles from './styles/FormStyles';
+import { LanguageContext } from './contexts/LanguageContext';
+
+const words = {
+    english: {
+        signIn: "Sign In",
+        email: "Email Address",
+        password: "Password",
+        remember: "Remember Me"
+    },
+    french: {
+        signIn: "Se Connecter",
+        email: "Adresse Électronique",
+        password: "Mot de Passe",
+        remember: "Souviens-toi De Moi"
+    },
+    spanish: {
+        signIn: "Registrarse",
+        email: "Correo Electrónico",
+        password: "Contraseña",
+        remember: "Recuérdame"
+    }
+}
 
 class Form extends Component {
+    static contextType = LanguageContext;
+
     render() {
         const { classes } = this.props;
+        const { language, changeLanguage } = this.context;
+        const { email, signIn, password, remember } = words[language];
         return (
             <main className={classes.main}>
                 <Paper className={classes.paper}>
                     <Avatar className={classes.avatar}>
                         <LockOutlinedIcon />
                     </Avatar>
-                    <Typography variant="h5">Sign In</Typography>
-                    <Select value="english">
+                    <Typography variant="h5">{signIn}</Typography>
+                    <Select value={language} onChange={changeLanguage}>
                         <MenuItem value="english">English</MenuItem>
                         <MenuItem value="french">French</MenuItem>
                         <MenuItem value="spanish">Spanish</MenuItem>
@@ -39,8 +65,8 @@ class Form extends Component {
                             <InputLabel
                                 htmlFor="email"
                             >
-                                Email
-                             </InputLabel>
+                                {email}
+                            </InputLabel>
                             <Input
                                 id="email"
                                 name="email"
@@ -57,8 +83,8 @@ class Form extends Component {
                             <InputLabel
                                 htmlFor="password"
                             >
-                                Password
-                             </InputLabel>
+                                {password}
+                            </InputLabel>
                             <Input
                                 id="password"
                                 name="password"
@@ -68,7 +94,7 @@ class Form extends Component {
                         </FormControl>
                         <FormControlLabel
                             control={<Checkbox color="primary" />}
-                            label="Remember Me"
+                            label={remember}
                         />
                         <Button
                             className={classes.submit}
@@ -77,7 +103,7 @@ class Form extends Component {
                             type="submit"
                             variant="contained"
                         >
-                            Sign In
+                            {signIn}
                         </Button>
                     </form>
                 </Paper>
